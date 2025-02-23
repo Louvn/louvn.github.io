@@ -3,65 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systemfehler</title>
+    <title>Retsam_Emag</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background-color: black;
-            color: red;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        #warning {
-            font-size: 24px;
-            font-weight: bold;
-            animation: blink 0.5s infinite alternate;
-        }
-        @keyframes blink {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        .popup {
-            position: absolute;
-            background: white;
-            color: black;
-            padding: 10px;
-            border: 2px solid red;
-            font-size: 18px;
-            box-shadow: 0 0 10px red;
-        }
+        body { background-color: #0a0f0d; color: #d4f5e9; }
     </style>
 </head>
-<body>
-    <h1 id="warning">Achtung! Systemfehler erkannt!</h1>
-    <p>Ihr System wird in <span id="countdown">10</span> Sekunden heruntergefahren!</p>
-    <audio id="errorSound" src="https://www.myinstants.com/en/instant/roblox-oof.mp3" preload="auto"></audio>
-    
-    <script>
-        let timeLeft = 10;
-        const countdown = document.getElementById('countdown');
-        const errorSound = document.getElementById('errorSound');
-        
-        const interval = setInterval(() => {
-            timeLeft--;
-            countdown.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                document.body.innerHTML = '<h1>System wird heruntergefahren...</h1>';
-                clearInterval(interval);
-            }
-        }, 1000);
-        
-        function showPopup() {
-            let popup = document.createElement('div');
-            popup.className = 'popup';
-            popup.textContent = 'Schwerwiegender Fehler! Code 0x800F';
-            popup.style.top = Math.random() * window.innerHeight + 'px';
-            popup.style.left = Math.random() * window.innerWidth + 'px';
-            document.body.appendChild(popup);
-            errorSound.play();
-            setTimeout(() => popup.remove(), 3000);
-        }
-        setInterval(showPopup, 1500);
-    </script>
+<body class="font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <!-- Header -->
+        <header class="text-center py-10">
+            <h1 class="text-4xl font-bold text-green-400">Retsam_Emag</h1>
+            <p class="text-gray-300">Hier findest du Infos über mich und meine Projekte.</p>
+        </header>
+
+        <!-- Über mich -->
+        <section id="about" class="py-10 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Über mich</h2>
+            <p class="text-gray-300 mt-2">Ich bin ein leidenschaftlicher Entwickler mit Fokus auf Python und interessiere mich für Webentwicklung.</p>
+        </section>
+
+        <!-- Projekte -->
+        <section id="projects" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Meine Projekte</h2>
+            <div class="mt-4 space-y-4">
+                <div class="bg-gray-900 p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-green-400">Ruby</h3>
+                    <p class="text-gray-300">Ein Discord-Bot für deinen Server, der dir Minecraft-Mods vorschlägt.</p>
+                </div>
+                <div class="bg-gray-900 p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-green-400">Projekt 2</h3>
+                    <p class="text-gray-300">Kurze Beschreibung des Projekts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt -->
+        <section id="contact" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg text-center">
+            <h2 class="text-2xl font-semibold text-green-300">Kontakt</h2>
+            <p class="text-gray-300 mt-2">Du kannst mich über GitHub oder per E-Mail erreichen.</p>
+        </section>
+    </div>
 </body>
 </html>

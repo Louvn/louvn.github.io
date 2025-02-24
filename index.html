@@ -3,55 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Über mich - Deine Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Louvn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0f0d; color: #d4f5e9; }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Über mich</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">Über mich</a></li>
-                    <li><a href="#projects">Projekte</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <!-- Header -->
+        <header class="text-center py-10">
+            <h1 class="text-4xl font-bold text-green-400">Louvn</h1>
+            <p class="text-gray-300">Python-Dev</p>
+        </header>
 
-    <section id="about">
-        <div class="container">
-            <h2>Über mich</h2>
-            <p>Hallo, ich bin [Dein Name], ein begeisterter Programmierer mit einem Fokus auf Python. Ich liebe es, neue Projekte zu entwickeln und kreativ zu sein.</p>
-            <img src="profile.jpg" alt="Dein Bild" class="profile-image">
-        </div>
-    </section>
+        <!-- Über mich -->
+        <section id="about" class="py-10 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Über mich</h2>
+            <p class="text-gray-300 mt-2">Hallo! Ich bin Louvn, ein Hobby-Entwickler mit Fokus auf Python. Meine Interessen dabei liegen vor allem auf Machine-Learning oder Datenverarbeitung. Auf dieser Website kannst du eine Übersicht meiner bisherigen Projekte sehen.</p>
+        </section>
 
-    <section id="projects">
-        <div class="container">
-            <h2>Meine Projekte</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="projekt1.jpg" alt="Projekt 1">
-                    <h3>Projekt 1</h3>
-                    <p>Beschreibung des Projekts 1.</p>
+        <!-- Projekte -->
+        <section id="projects" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Meine Projekte</h2>
+            <div class="mt-4 space-y-4">
+                <div class="bg-gray-900 p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-green-400">Ruby</h3>
+                    <p class="text-gray-300">Ein Discord-Bot, der dir regelmäßig Minecraft-Mods vorschlägt. <a href="https://discord.com/oauth2/authorize?client_id=1340299046614732850&permissions=8&integration_type=0&scope=applications.commands+bot" class="text-green-400 underline" target="_blank">Hier geht's zum Projekt</a></p>
                 </div>
-                <div class="project-card">
-                    <img src="projekt2.jpg" alt="Projekt 2">
-                    <h3>Projekt 2</h3>
-                    <p>Beschreibung des Projekts 2.</p>
+                <div class="bg-gray-900 p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-green-400">neuronex</h3>
+                    <p class="text-gray-300">Ein KI-Chatbot (Aktuell in Entwicklung) <a href="" class="text-green-400 underline" target="_blank">Hier geht's zum Projekt</a></p>
                 </div>
-                <!-- Weitere Projekte hier hinzufügen -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Dein Name. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        <!-- Hier findest du mich: -->
+        <section id="contact" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg text-center">
+            <h2 class="text-2xl font-semibold text-green-300">Hier findest du mich</h2>
+            <p class="text-gray-300 mt-2"><a href="https://github.com/Louvn" class="text-green-400 underline" target="_blank">GitHub</a></p>
+        </section>
+    </div>
 </body>
 </html>

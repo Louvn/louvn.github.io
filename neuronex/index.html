@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <style>
+        body {
+            background-color: #0a0f0d;
+            color: #d4fcb3;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chat-container {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #2a5934;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #0d1b13;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            max-width: 70%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+        .user {
+            align-self: flex-end;
+            background-color: #2a5934;
+        }
+        .bot {
+            align-self: flex-start;
+            background-color: #1c3325;
+        }
+        .typing {
+            align-self: flex-start;
+            background-color: #1c3325;
+            padding: 10px;
+            border-radius: 10px;
+            font-style: italic;
+            opacity: 0.7;
+        }
+        .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background-color: #d4fcb3;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes blink {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        .input-container {
+            display: flex;
+            border-top: 2px solid #2a5934;
+        }
+        input {
+            flex-grow: 1;
+            padding: 10px;
+            background: #152820;
+            border: none;
+            color: #d4fcb3;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #2a5934;
+            border: none;
+            color: #d4fcb3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Schreib etwas...">
+            <button onclick="sendMessage()">Senden</button>
+        </div>
+    </div>
+
+    <script>
+        const inputField = document.getElementById("userInput");
+        const sendButton = document.querySelector("button");
+
+        inputField.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = inputField.value.trim();
+            if (message === "") return;
+
+            addMessage(message, "user");
+            inputField.value = "";
+            inputField.disabled = true;
+            sendButton.disabled = true;
+
+            setTimeout(() => {
+                addTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    typeBotMessage("Das ist eine Dummy-Antwort.");
+                }, 1000);
+            }, 500);
+        }
+
+        function addMessage(text, className) {
+            const messagesDiv = document.getElementById("messages");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", className);
+            messageElement.innerHTML = text;
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const messagesDiv = document.getElementById("messages");
+            const typingElement = document.createElement("div");
+            typingElement.classList.add("typing");
+            typingElement.id = "typing";
+            typingElement.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+            messagesDiv.appendChild(typingElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById("typing");
+            if (typingElement) typingElement.remove();
+        }
+
+        function typeBotMessage(text) {
+            const messagesDiv = document.getElementById("messages");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", "bot");
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            let index = 0;
+            function typeCharacter() {
+                if (index < text.length) {
+                    messageElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeCharacter, 50);
+                } else {
+                    inputField.disabled = false;
+                    sendButton.disabled = false;
+                }
+            }
+            typeCharacter();
+        }
+    </script>
+</body>
+</html>

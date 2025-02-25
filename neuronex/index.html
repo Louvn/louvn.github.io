@@ -7,21 +7,20 @@
     <style>
         body {
             background-color: #0a0f0d;
-            color: #d4fcb3;
+            color: purple;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative;
         }
         .chat-container {
             width: 90%;
             height: 90%;
             display: flex;
             flex-direction: column;
-            border: 2px solid #2a5934;
-            border-radius: 10px;
             overflow: hidden;
         }
         .messages {
@@ -60,7 +59,7 @@
             width: 8px;
             height: 8px;
             margin: 0 2px;
-            background-color: #d4fcb3;
+            background-color: blueviolet;
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
@@ -77,25 +76,35 @@
         }
         .input-container {
             display: flex;
-            border-top: 2px solid #2a5934;
+            border-top: 2px solid blueviolet;
         }
         input {
             flex-grow: 1;
             padding: 10px;
             background: #152820;
             border: none;
-            color: #d4fcb3;
+            color: plum;
         }
         button {
             padding: 10px 15px;
             background-color: #2a5934;
             border: none;
-            color: #d4fcb3;
+            color: blueviolet;
             cursor: pointer;
+        }
+
+        /* Mystical plant image styles */
+        #mysticalImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
         }
     </style>
 </head>
 <body>
+    <img id="mysticalImage" src="logo.jpg" alt="Mystical Plant" width="150">
     <div class="chat-container">
         <div class="messages" id="messages"></div>
         <div class="input-container">
@@ -107,6 +116,7 @@
     <script>
         const inputField = document.getElementById("userInput");
         const sendButton = document.querySelector("button");
+        const mysticalImage = document.getElementById("mysticalImage");
 
         inputField.addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
@@ -131,6 +141,8 @@
                     typeBotMessage("Das ist eine Dummy-Antwort.");
                 }, 1000);
             }, 500);
+
+            mysticalImage.style.display = "none"; // Hides the image after the first message
         }
 
         function addMessage(text, className) {
@@ -177,6 +189,10 @@
             }
             typeCharacter();
         }
+
+        window.onload = () => {
+            mysticalImage.style.display = "block"; // Shows the image on page load
+        };
     </script>
 </body>
 </html>

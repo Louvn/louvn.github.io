@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>neuronex</title>
     <style>
+        html, body {
+            overflow: hidden;
+            height: 100%;
+        }
         body {
             background-color: #0a0f0d;
             color: purple;
@@ -87,7 +91,7 @@
             border: none;
             border-radius: 32px;
             border-top-right-radius: 0px;
-            border-bottom-right-radius: 0px ;
+            border-bottom-right-radius: 0px;
             color: whitesmoke;
         }
         button {
@@ -100,8 +104,6 @@
             color: whitesmoke;
             cursor: pointer;
         }
-
-        /* Mystical plant image styles */
         #logo {
             position: absolute;
             top: 50%;
@@ -120,11 +122,9 @@
             <button onclick="sendMessage()">Senden</button>
         </div>
     </div>
-
     <script>
         const inputField = document.getElementById("userInput");
         const sendButton = document.querySelector("button");
-        const mysticalImage = document.getElementById("mysticalImage");
 
         inputField.addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
@@ -150,7 +150,7 @@
                 }, 1000);
             }, 500);
 
-            logo.style.display = "none"; // Hides the image after the first message
+            logo.style.display = "none";
         }
 
         function addMessage(text, className) {
@@ -199,7 +199,7 @@
         }
 
         window.onload = () => {
-            logo.style.display = "block"; // Shows the image on page load
+            logo.style.display = "block";
         };
     </script>
 </body>

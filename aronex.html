@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aronex Chat</title>
+  <title>AI</title>
   <style>
     /* Globales Styling */
     body {
@@ -290,7 +290,7 @@
             clearInterval(interval);
           }
         }, 30);
-      }, 500);
+      }, 5000);
     }
 
     // Funktion zum Senden einer Nachricht
@@ -302,13 +302,13 @@
       showChatHistory();
       
       // Füge die Nutzer-Nachricht als Sprechblase hinzu
-      const userBubble = createBubble("Du: " + message, "user");
+      const userBubble = createBubble(message, "user");
       chatHistoryDiv.appendChild(userBubble);
       chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight;
 
       // Simuliere die Bot-Antwort
       setTimeout(() => {
-        animateBotMessage("Aronex: Antwort auf: \"" + message + "\"");
+        animateBotMessage("Antwort auf: \"" + message + "\"");
       }, 300);
     }
 

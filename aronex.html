@@ -32,7 +32,7 @@
     }
     /* Version-Auswahl (Combobox) */
     .version-select {
-      width: 100%;
+      width: 20%;
       padding: 8px 12px;
       border: 2px solid #3EB489;
       border-radius: 32px;
@@ -60,7 +60,7 @@
       border-radius: 16px;
       padding: 10px;
       overflow-y: auto;
-      height: 100%; /* entspricht der Zeilenhöhe von 200px */
+      height: 220%; /* entspricht der Zeilenhöhe von 200px */
       display: none; /* wird erst sichtbar, wenn Nachrichten vorliegen */
       flex-direction: column;
       gap: 10px;
@@ -195,7 +195,7 @@
     </div>
 
     <!-- Zeile 5: Eingabezeile (feste Höhe) -->
-    <div class="input-row">
+    <div class="input-row" id="inputRow">
       <input type="text" id="userInput" placeholder="Stelle eine Frage...">
       <button id="sendButton">Senden</button>
     </div>
@@ -238,12 +238,14 @@
     const logoDiv = document.getElementById("logoDiv");
     const userInput = document.getElementById("userInput");
     const sendButton = document.getElementById("sendButton");
+    const inputRow = document.getElementByid("inputRow");
 
     // Zeige Chat-History an und blende Vorschläge/Logo aus
     function showChatHistory() {
       chatHistoryDiv.style.display = "flex";
       suggestionsDiv.style.display = "none";
       logoDiv.style.display = "none";
+      inputRow.style.marginTop = "120px";
     }
 
     // Erstelle eine Sprechblasen-Nachricht

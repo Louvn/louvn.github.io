@@ -52,6 +52,7 @@
     .logo img {
       width: 150px;
       height: 150px;
+      animation: pulse 2 infinite;
     }
     /* Chat-History: Feste Höhe (200px) mit Overflow, sodass der Inhalt scrollbar bleibt */
     .chat-history {
@@ -167,6 +168,17 @@
       overflow: hidden;
       vertical-align: bottom;
     }
+    @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
   </style>
 </head>
 <body>

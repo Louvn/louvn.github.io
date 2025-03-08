@@ -78,13 +78,14 @@
         </section>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            function updateStatus() {
                 const statusDot = document.getElementById('status-dot');
                 const statusText = document.getElementById('status-text');
 
                 fetch('https://mod-bot-ruby.onrender.com')
                     .then(response => response.text())
                     .then(data => {
+                        statusDot.className = 'status-dot';
                         if (data.trim() === 'Alive') {
                             statusText.textContent = 'Ruby ist aktuell online.';
                             statusDot.classList.add('online');
@@ -98,6 +99,11 @@
                         statusText.textContent = 'Status konnte nicht abgerufen werden.';
                         statusDot.classList.add('error');
                     });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                updateStatus();
+                setInterval(updateStatus, 5000);
             });
         </script>
     </div>

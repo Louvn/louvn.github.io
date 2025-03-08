@@ -8,11 +8,30 @@
     <style>
         body { background-color: #0a0f0d; color: #d4f5e9; }
         img.logo { height: 80px; border-radius: 32px }
+        
+        .status-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: gray;
+            animation: pulse 1.5s infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .online { background-color: #4CAF50; }
+        .offline { background-color: #f44336; }
+        .error { background-color: #FF9800; }
     </style>
 </head>
 <body class="font-sans">
     <div class="max-w-4xl mx-auto p-6">
-        <!-- Header mit Logo -->
         <header class="text-center py-10">
             <img src="logo.png" alt="Logo" class="logo mx-auto">
             <h1 class="text-4xl font-bold text-green-400">Ruby</h1>
@@ -22,13 +41,19 @@
                target="_blank">Bot hinzufügen</a>
         </header>
 
-        <!-- Über Ruby -->
         <section id="about" class="py-10 rounded-xl bg-gray-800 p-6 shadow-lg">
             <h2 class="text-2xl font-semibold text-green-300">Was ist Ruby?</h2>
             <p class="text-gray-300 mt-2">Ruby ist ein Discord-Bot, der dir regelmäßig Mods empfiehlt. Dabei kannst du ihn selbst konfigurieren. Aktuell sind nur Mod-Vorschläge für Minecraft verfügbar.</p>
         </section>
 
-        <!-- Features -->
+        <section id="bot-status-container" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Bot-Status</h2>
+            <div id="bot-status" class="text-gray-300">
+                <span id="status-dot" class="status-dot"></span>
+                <span id="status-text">Überprüfe Status...</span>
+            </div>
+        </section>
+
         <section id="features" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
             <h2 class="text-2xl font-semibold text-green-300">Features</h2>
             <ul class="mt-4 space-y-2 text-gray-300">
@@ -39,7 +64,6 @@
             </ul>
         </section>
 
-        <!-- Updates -->
         <section id="updates" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
             <h2 class="text-2xl font-semibold text-green-300">Letzte Updates</h2>
             <ul class="mt-4 space-y-2 text-gray-300">
@@ -47,12 +71,35 @@
             </ul>
         </section>
 
-        <!-- Kontakt -->
         <section id="contact" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg text-center">
             <h2 class="text-2xl font-semibold text-green-300">Mehr über mich</h2>
             <p class="text-gray-300 mt-2"><a href="https://github.com/Louvn" class="text-green-400 underline" target="_blank">Mein GitHub-Profil</a></p>
             <p class="text-gray-300 mt-2"><a href="../.." class="text-green-400 underline">Meine Projekte</a></p>
         </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const statusDot = document.getElementById('status-dot');
+                const statusText = document.getElementById('status-text');
+
+                fetch('https://mod-bot-ruby.onrender.com')
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data.trim() === 'Alive') {
+                            statusText.textContent = 'Ruby ist aktuell online.';
+                            statusDot.classList.add('online');
+                        } else {
+                            statusText.textContent = 'Ruby ist aufgrund von Wartungsarbeiten offline.';
+                            statusDot.classList.add('offline');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fehler beim Abrufen des Bot-Status:', error);
+                        statusText.textContent = 'Status konnte nicht abgerufen werden.';
+                        statusDot.classList.add('error');
+                    });
+            });
+        </script>
     </div>
 </body>
 </html>

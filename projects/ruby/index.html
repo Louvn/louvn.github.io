@@ -82,6 +82,12 @@
                 const statusDot = document.getElementById('status-dot');
                 const statusText = document.getElementById('status-text');
 
+                if (!navigator.onLine) {
+                    statusDot.className = 'status-dot error';
+                    statusText.textContent = 'Der Status konnte nicht abgerufen werden (Keine Internetverbindung).';
+                    return;
+                }
+
                 fetch('https://mod-bot-ruby.onrender.com')
                     .then(response => response.text())
                     .then(data => {
@@ -96,8 +102,8 @@
                     })
                     .catch(error => {
                         console.error('Fehler beim Abrufen des Bot-Status:', error);
-                        statusText.textContent = 'Status konnte nicht abgerufen werden.';
-                        statusDot.classList.add('error');
+                        statusText.textContent = 'Ruby ist offline. Dies kann an Wartungsarbeiten oder einem unerwarteten Fehler liegen.';
+                        statusDot.classList.add('offline');
                     });
             }
 

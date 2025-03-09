@@ -1,0 +1,30 @@
+{
+    "0.1.0": {
+      "name": "Blackbox 1.0",
+      "date": "2025-03-09",
+      "features": [
+        "Erste Version mit Grundfunktionen.",
+        "Einfache Übersetzungen zwischen Englisch und Deutsch.",
+        "CLI-basierte Steuerung."
+      ]
+    },
+    "1.1": {
+      "name": "Blackbox 1.1",
+      "date": "2025-03-15",
+      "features": [
+        "Bugfixes und Performance-Verbesserungen.",
+        "Mehr unterstützte Sprachen.",
+        "Web-Interface hinzugefügt."
+      ]
+    },
+    "2.0": {
+      "name": "Blackbox 2.0",
+      "date": "2025-04-01",
+      "features": [
+        "Komplettes Redesign mit neuer Architektur.",
+        "Neuronale Netz-Übersetzungen.",
+        "Verbesserte Benutzeroberfläche."
+      ]
+    }
+  }
+  

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louvn | Version</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0f0d; color: #d4f5e9; }
+        img.logo { height: 80px; border-radius: 32px }
+    </style>
+</head>
+<body class="font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <header class="text-center py-10">
+            <img src="../logo.png" alt="Logo" class="logo mx-auto">
+            <h1 id="version-title" class="text-4xl font-bold text-green-400">Lade Version...</h1>
+            <p id="version-date" class="text-gray-300"></p>
+        </header>
+
+        <section id="version-info" class="py-10 rounded-xl bg-gray-800 p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold text-green-300">Neuerungen:</h2>
+            <ul id="version-features" class="mt-4 space-y-2 text-gray-300"></ul>
+        </section>
+
+        <section class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg text-center">
+            <h2 class="text-2xl font-semibold text-green-300">Weitere Versionen</h2>
+            <p class="text-gray-300 mt-2"><a href="../index.html" class="text-green-400 underline">Zurück zur Übersicht</a></p>
+        </section>
+    </div>
+
+    <script>
+        async function loadVersion() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const version = urlParams.get("v");
+
+            if (!version) {
+                document.getElementById("version-info").innerHTML = "<p>Keine Version angegeben.</p>";
+                return;
+            }
+
+            try {
+                const response = await fetch("versions.json");
+                const versions = await response.json();
+
+                if (!versions[version]) {
+                    document.getElementById("version-info").innerHTML = "<p>Version nicht gefunden.</p>";
+                    return;
+                }
+
+                const vData = versions[version];
+                document.getElementById("version-title").innerText = vData.name;
+                document.getElementById("version-date").innerText = "Veröffentlicht am: " + vData.date;
+
+                const featuresList = document.getElementById("version-features");
+                featuresList.innerHTML = "";
+                vData.features.forEach(feature => {
+                    const li = document.createElement("li");
+                    li.innerText = "• " + feature;
+                    featuresList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Fehler beim Laden der Versionen:", error);
+                document.getElementById("version-info").innerHTML = "<p>Fehler beim Laden der Daten.</p>";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadVersion);
+    </script>
+</body>
+</html>

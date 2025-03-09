@@ -115,7 +115,7 @@
                         Object.keys(versions).forEach(version => {
                             const versionData = versions[version];
                             const listItem = document.createElement('li');
-                            listItem.innerHTML = `• <b><a href="versions?v=${version}" class="text-green-400 underline">${versionData.name}</a></b> - ${versionData.date} - ${versionData.summary}`;
+                            listItem.innerHTML = `• <b><a href="versions?v=${version}" class="text-green-400">${versionData.name}</a></b> - ${versionData.date} - ${versionData.summary}`;
                             updatesList.appendChild(listItem);
                         });
                     })

@@ -66,10 +66,7 @@
 
         <section id="updates" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg">
             <h2 class="text-2xl font-semibold text-green-300">Updates</h2>
-            <ul class="mt-4 space-y-2 text-gray-300">
-                <li>• <b>0.1.0</b> - 28.02.2025 - Ruby in erster Test-Version</li>
-                <li>• <b>0.1.1</b> - 09.03.2025 - Einige große Bugs gefixed</li>
-            </ul>
+            <ul id="updates-list" class="mt-4 space-y-2 text-gray-300"></ul>
         </section>
 
         <section id="contact" class="py-10 mt-6 rounded-xl bg-gray-800 p-6 shadow-lg text-center">
@@ -108,9 +105,27 @@
                     });
             }
 
+            function loadVersions() {
+                fetch('versions/versions.json')
+                    .then(response => response.json())
+                    .then(versions => {
+                        const updatesList = document.getElementById('updates-list');
+                        updatesList.innerHTML = '';
+
+                        Object.keys(versions).forEach(version => {
+                            const versionData = versions[version];
+                            const listItem = document.createElement('li');
+                            listItem.innerHTML = `• <b><a href="versions?v=${version}" class="text-green-400 underline">${versionData.name}</a></b> - ${versionData.date} - ${versionData.summary}`;
+                            updatesList.appendChild(listItem);
+                        });
+                    })
+                    .catch(error => console.error('Fehler beim Laden der Versionen:', error));
+            }
+
             document.addEventListener('DOMContentLoaded', function () {
                 updateStatus();
                 setInterval(updateStatus, 5000);
+                loadVersions();
             });
         </script>
     </div>

@@ -1,29 +1,24 @@
 {
     "0.1.0": {
-      "name": "Blackbox 1.0",
-      "date": "2025-03-09",
+      "name": "Ruby 0.1.0",
+      "date": "28.02.2025",
+      "summary": "Der Grundaufbau im Test.",
       "features": [
-        "Erste Version mit Grundfunktionen.",
-        "Einfache Übersetzungen zwischen Englisch und Deutsch.",
-        "CLI-basierte Steuerung."
+        "Erste Test-Version",
+        "featured und zufällige Mods",
+        "Unterstützung für Minecraft"
       ]
     },
-    "1.1": {
-      "name": "Blackbox 1.1",
-      "date": "2025-03-15",
+    "0.1.1": {
+      "name": "Ruby 0.1.1",
+      "date": "09.03.2025",
+      "summary": "Bugfixes, bessere Konfiguration",
       "features": [
-        "Bugfixes und Performance-Verbesserungen.",
-        "Mehr unterstützte Sprachen.",
-        "Web-Interface hinzugefügt."
-      ]
-    },
-    "2.0": {
-      "name": "Blackbox 2.0",
-      "date": "2025-04-01",
-      "features": [
-        "Komplettes Redesign mit neuer Architektur.",
-        "Neuronale Netz-Übersetzungen.",
-        "Verbesserte Benutzeroberfläche."
+        "Bugfixes",
+        "/deactivate",
+        "/settings",
+        "/gameversions",
+        "/waitingtime"
       ]
     }
   }

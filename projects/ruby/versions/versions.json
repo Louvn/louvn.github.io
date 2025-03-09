@@ -12,13 +12,13 @@
     "0.1.1": {
       "name": "Ruby 0.1.1",
       "date": "09.03.2025",
-      "summary": "Bugfixes, bessere Konfiguration",
+      "summary": "große Bugfixes, bessere Konfiguration durch neue Befehle",
       "features": [
-        "Bugfixes",
-        "/deactivate",
-        "/settings",
-        "/gameversions",
-        "/waitingtime"
+        "große Bugfixes",
+        "Deaktivieren des Bots auf dem Server: /deactivate",
+        "Anzeigen der Einstellungen: /settings",
+        "Filter für Spielversionen: /gameversions",
+        "Zeit-Intervall: /waitingtime"
       ]
     }
   }

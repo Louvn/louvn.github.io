@@ -22,6 +22,7 @@
            "Anzeigen der Einstellungen: /settings",
            "Filter für Spielversionen: /gameversions",
            "Zeit-Intervall: /waitingtime"
+       ]
     },
     "0.2.1": {
       "name": "Ruby 0.2.1",

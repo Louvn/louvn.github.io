@@ -1,24 +1,36 @@
 {
     "0.1.0": {
       "name": "Ruby 0.1.0",
-      "date": "28.02.2025",
+      "date": "22.02.2025",
       "summary": "Der Grundaufbau im Test.",
       "features": [
         "Erste Test-Version",
         "featured und zufällige Mods",
-        "Unterstützung für Minecraft"
+        "Unterstützung für Minecraft",
+        "Aktivieren durch !activate"
       ]
     },
-    "0.1.1": {
-      "name": "Ruby 0.1.1",
+    "0.2.0": {
+       "name": "Ruby 0.2.0",
+       "date": "28.02.2025",
+       "summary": "große Bugfixes, in-app commands, mehr Konfigurationsmöglichkeiten",
+       "features": [
+           "große Bugfixes",
+           "Commands sind ab sofort in-app einsehbar",
+           "!activate wird zu /activate",
+           "Deaktivieren des Bots auf dem Server: /deactivate",
+           "Anzeigen der Einstellungen: /settings",
+           "Filter für Spielversionen: /gameversions",
+           "Zeit-Intervall: /waitingtime"
+    },
+    "0.2.1": {
+      "name": "Ruby 0.2.1",
       "date": "09.03.2025",
-      "summary": "große Bugfixes, bessere Konfiguration durch neue Befehle",
+      "summary": "große Bugfixes, bessere Auswahl, ...",
       "features": [
-        "große Bugfixes",
-        "Deaktivieren des Bots auf dem Server: /deactivate",
-        "Anzeigen der Einstellungen: /settings",
-        "Filter für Spielversionen: /gameversions",
-        "Zeit-Intervall: /waitingtime"
+        "Einige Bugfixes im Backend",
+        "verbesserte Mod-Auswahl",
+        "Nur noch Server-Admins können commands ausführen"
       ]
     }
   }
